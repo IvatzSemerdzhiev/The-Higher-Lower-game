@@ -114,16 +114,22 @@ list = []
 
 game_is_on = True
 points = 0
+
+for x in peaks:
+    list.append(x)
+
+
+def pick_random_peak():
+    peak_random = random.choice(list)
+    return peak_random
+
+
+peak1 = pick_random_peak()
+
+
 while game_is_on:
 
-    for x in peaks:
-        list.append(x)
 
-    def pick_random_peak():
-        peak_random = random.choice(list)
-        return peak_random
-
-    peak1 = pick_random_peak()
     peak2 = pick_random_peak()
     if peak1 == peak2:
         continue
@@ -138,7 +144,7 @@ while game_is_on:
     print(peak2)
 
 
-    user_choice = input("Higher h or lower l ->")
+    user_choice = input("Higher h or lower l ->").lower()
     if user_choice == 'l' and height1 < height2:
         game_is_on = False
 
@@ -158,10 +164,10 @@ while game_is_on:
     else:
         game_is_on = True
         print(f"{height2}m")
-
+        peak1 = peak2
+        height1 = height2
     points +=1
     print(f"Your score :{points}")
-
 
 
 
